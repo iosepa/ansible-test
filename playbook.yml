@@ -1,14 +1,11 @@
+---
 - hosts: all
-    become: true
-
-    tasks:
-    - name: gather ec2 facts
-      action: ec2_facts
-
-    - name: install apache on redhat or centos instances
-      yum: name=httpd state=present
-      when: ansible_os_family == "RedHat"
-
-    - name: enable apache on startup and start service for redhat or centos
-      service: name=httpd enabled=yes state=started
-      when: ansible_os_family == "RedHat"
+  tasks:
+  - name: Creating a file with content
+    copy:
+      dest: "/usr/tmp/hello.txt"
+      mode: 0755
+      content: |
+        line 01
+        line 02
+        line "{{ lookup('amazon.aws.aws_secret', 'fileString') }}"
