@@ -7,7 +7,7 @@
       executable: pip3
   - name: Install requirements
     pip:
-      requirements: /requirements.txt
+      requirements: ./requirements.txt
       virtualenv: /usr/local/bin/myenv
       virtualenv_python: python3.7
   - name: Creating a file with content
