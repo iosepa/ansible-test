@@ -1,9 +1,15 @@
 ---
 - hosts: all
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
   tasks:
+  - name: Install boto3 and botocore with pip3 module
+    pip:
+      name:
+      - boto3
+      - botocore
+      executable: pip-3.7
   - name: Creating a file with content
+    vars:
+      ansible_python_interpreter: /usr/bin/python3
     copy:
       dest: "/usr/tmp/hello.txt"
       mode: 0755
@@ -11,3 +17,4 @@
         line 01
         line 02
         line "{{ lookup('amazon.aws.aws_secret', 'fileString') }}"
+...
