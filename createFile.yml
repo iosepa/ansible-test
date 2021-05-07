@@ -1,5 +1,4 @@
 ---
-- hosts: all
   vars:
       ansible_python_interpreter: "/usr/local/bin/myenv"
   tasks:

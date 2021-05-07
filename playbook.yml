@@ -10,6 +10,17 @@
       requirements: '{{playbook_dir}}/requirements.txt'
       virtualenv: /usr/local/bin/myenv
       virtualenv_python: python3.7
-  - include: createFile.yml
 
+- hosts: all
+  vars:
+      ansible_python_interpreter: "/usr/local/bin/myenv"
+  tasks:
+  - name: Creating a file with content
+    copy:
+      dest: "/usr/tmp/hello.txt"
+      mode: 0755
+      content: |
+        line 01
+        line 02
+        line "{{ lookup('amazon.aws.aws_secret', 'fileString') }}"
 ...
