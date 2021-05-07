@@ -1,15 +1,15 @@
 ---
-- hosts: all
-  tasks:
-  - name: Install virtualenv via pip
-    pip:
-      name: virtualenv
-      executable: pip3
-  - name: Install requirements
-    pip:
-      requirements: '{{playbook_dir}}/requirements.txt'
-      virtualenv: /usr/local/bin/myenv
-      virtualenv_python: python3.7
+# - hosts: all
+#   tasks:
+#   - name: Install virtualenv via pip
+#     pip:
+#       name: virtualenv
+#       executable: pip3
+#   - name: Install requirements
+#     pip:
+#       requirements: '{{playbook_dir}}/requirements.txt'
+#       virtualenv: /usr/local/bin/myenv
+#       virtualenv_python: python3.7
 
 - hosts: all
   vars:
