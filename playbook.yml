@@ -7,8 +7,8 @@
       executable: pip3
   - name: Install requirements
     pip:
-      requirements: /my_app/requirements.txt
-      virtualenv: /user/home/venvs/myenv
+      requirements: /requirements.txt
+      virtualenv: /usr/local/bin/virtualenv/myenv
       virtualenv_python: python3.7
   - name: Creating a file with content
     vars:
