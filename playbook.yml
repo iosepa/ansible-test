@@ -1,12 +1,11 @@
 ---
 - hosts: all
   tasks:
-  - name: Install boto3 and botocore with pip3 module
+  - name: Install requirements
     pip:
-      name:
-      - boto3
-      - botocore
-      executable: pip-3.7
+      requirements: /my_app/requirements.txt
+      virtualenv: /user/home/venvs/myenv
+      virtualenv_python: python3.7
   - name: Creating a file with content
     vars:
       ansible_python_interpreter: /usr/bin/python3
