@@ -11,8 +11,6 @@
       virtualenv: /usr/local/bin/virtualenv/myenv
       virtualenv_python: python3.7
   - name: Creating a file with content
-    vars:
-      ansible_python_interpreter: /usr/bin/python3
     copy:
       dest: "/usr/tmp/hello.txt"
       mode: 0755
