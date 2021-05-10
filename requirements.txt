@@ -1,3 +1,4 @@
+setuptools-rust
 boto3
 botocore
 ansible

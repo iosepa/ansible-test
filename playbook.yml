@@ -1,20 +1,18 @@
----
-# - hosts: all
-#   tasks:
-#   - name: Install virtualenv via pip
-#     pip:
-#       name: virtualenv
-#       executable: pip3
-#   - name: Install requirements
-#     pip:
-#       requirements: '{{playbook_dir}}/requirements.txt'
-#       virtualenv: /usr/local/bin/myenv
-#       virtualenv_python: python3.7
-
-- hosts: all
-  vars:
-      ansible_python_interpreter: "/usr/local/bin/myenv"
+- hosts: localhost
   tasks:
+  - name: install pip
+    yum:
+      name:
+        - python-pip
+  - name: Install boto3/core and awscli
+    pip:
+      name:
+        - boto3
+        - botocore
+        - awscli
+      state: present
+      executable: pip
+      extra_args: --no-cache-dir
   - name: Creating a file with content
     copy:
       dest: "/usr/tmp/hello.txt"
@@ -22,5 +20,5 @@
       content: |
         line 01
         line 02
-        line "{{ lookup('amazon.aws.aws_secret', 'fileString') }}"
+        line "{{ lookup('amazon.aws.aws_secret', 'fileString', region='us-west-2') }}"
 ...
